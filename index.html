@@ -1,85 +1,52 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>挽挽的翻譯師日記</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>朗讀測試</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #fff0f5;
-      color: #333;
-      padding: 20px;
+      font-family: sans-serif;
       text-align: center;
+      margin-top: 100px;
     }
-    h1 {
-      color: #d63384;
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-    }
-    .section {
-      background-color: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(243, 156, 181, 0.3);
-      padding: 20px;
-      margin-bottom: 30px;
-    }
-    .day-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-    .day-links a {
-      background-color: #ffe4ec;
-      border: 2px solid #ffb6c1;
-      padding: 10px 16px;
+    button {
+      padding: 1rem 2rem;
+      background-color: #ffaad4;
+      border: none;
       border-radius: 10px;
-      color: #d63384;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.2s ease;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
     }
-    .day-links a:hover {
-      background-color: #ffdce6;
-    }
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    ul li::before {
-      content: "✔ ";
-      color: #d63384;
-      font-weight: bold;
+    button:hover {
+      background-color: #f98fc3;
     }
   </style>
 </head>
 <body>
-  <h1>挽挽的翻譯師日記</h1>
-  <p>這裡是我的翻譯修煉地，每天一點點，慢慢成為專業翻譯師！</p>
+  <h1>🔈 測試朗讀功能</h1>
+  <button onclick="speakJapanese('こんにちは')">點我唸出「こんにちは」</button>
 
-  <div class="section">
-    <h2>每日練習</h2>
-    <div class="day-links">
-      <a href="translator-day1.html">Day 1</a>
-      <a href="#">Day 2（準備中）</a>
-      <a href="#">Day 3（準備中）</a>
-      <a href="#">Day 4（準備中）</a>
-    </div>
-  </div>
+  <script>
+    function speakJapanese(text) {
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'ja-JP';
 
-  <div class="section">
-    <h2>完成進度</h2>
-    <ul>
-      <li>Day 1：單字＋例句互譯練習</li>
-      <li>Day 2：即將解鎖</li>
-      <li>Day 3：即將解鎖</li>
-    </ul>
-  </div>
+      // 確保語音載入完成
+      const voices = speechSynthesis.getVoices();
+      const jpVoice = voices.find(v => v.lang === 'ja-JP');
+      if (jpVoice) utter.voice = jpVoice;
 
-  <div class="section">
-    <h2>未來作品展示區</h2>
-    <p>（之後可以放你翻譯的日記、影片字幕、文章對照…）</p>
-  </div>
+      speechSynthesis.speak(utter);
+    }
+
+    // 為了 Firefox/部分載入延遲
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+      speechSynthesis.onvoiceschanged = () => {
+        console.log('🔊 語音載入完成');
+      };
+    }
+  </script>
 </body>
 </html>
+

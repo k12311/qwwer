@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>大家的日本語 - 首頁</title>
+
+  <!-- 🌸 PWA 設定 -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icon-192.png">
+
+  <style>
+    body {
+      font-family: 'Arial', 'Hiragino Kaku Gothic ProN', sans-serif;
+      background-color: #fff0f5;
+      color: #333;
+      padding: 2rem;
+      text-align: center;
+      margin: 0;
+    }
+
+    h1 {
+      color: #d26fa0;
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .lesson-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      margin: 0.5rem;
+      background-color: #ffaad4;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .lesson-btn:hover {
+      background-color: #f98fc3;
+      transform: scale(1.05);
+    }
+
+    .footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #999;
+    }
+
+    /* 🌸 Splash 畫面 */
+    #splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #fff0f5;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #splash img {
+      max-width: 80%;
+      height: auto;
+    }
+
+    /* 🎵 音樂按鈕 */
+    .music-btn {
+      padding: 10px 20px;
+      background-color: #ffc1d9;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .music-btn:hover {
+      background-color: #fca6c5;
+    }
+
+    /* 🐰 跳舞的吉伊卡哇 */
+    #usagiDance {
+      width: 100px;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: none;
+      animation: dance 0.5s infinite alternate;
+    }
+
+    @keyframes dance {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    /* 🐞 Debug 視窗 */
+    #debugBox {
+      position: fixed;
+      top: 50px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid #ffc1d9;
+      border-radius: 8px;
+      padding: 10px 15px;
+      font-size: 0.9rem;
+      box-shadow: 0 0 8px rgba(255, 182, 193, 0.5);
+      color: #d63384;
+      display: none;
+      z-index: 2000;
+    }
+
+    /* 🐞 Debug 切換按鈕 */
+    #toggleDebug {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: #ffe2ec;
+      border: 1px solid #ffb6c1;
+      color: #d63384;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      z-index: 3000;
+    }
+.lang-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.lang-switcher a {
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background-color: #ffb6c1;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.lang-switcher a:hover {
+  background-color: #f98fc3;
+  transform: scale(1.05);
+}
+
+  </style>
+</head>
+
+<body>
+<div class="lang-switcher">
+  <a href="index-zh.html">🌸 中文</a>
+  <a href="index-jp.html">🎌 日本語</a>
+  <a href="index.html">🇰🇷 한국어</a>
+</div>
+
+  <!-- 🌸 開場動畫 -->
+  <div id="splash">
+    <img src="splash-screen.png" alt="開場畫面">
+  </div>
+
+  <!-- 🐞 Debug 切換按鈕 -->
+  <button id="toggleDebug">🐞 Debug</button>
+
+  <!-- 🎯 Debug 顯示框 -->
+  <div id="debugBox">
+    🎧 音樂：<span id="debugMusic">停止</span><br>
+    🐰 圖片：<span id="debugUsagi">隱藏</span><br>
+    💃 動畫：<span id="debugAnim">未啟動</span>
+  </div>
+
+  <!-- 🎵 背景音樂 -->
+  <audio id="bgm" src="bgm.mp3" loop></audio>
+  <button class="music-btn" id="musicToggleBtn">🎵 播放音樂</button>
+
+  <!-- 🐰 跳舞的吉伊卡哇 -->
+  <img id="usagiDance" src="usagi.gif" alt="吉伊卡哇跳舞">
+
+  <h1>🌸 大家的日本語：主選單</h1>
+
+<div class="lesson-links">
+  <a href="kana-chart.html" class="lesson-btn">五十音表</a>
+  <a href="lesson1.html" class="lesson-btn">第1課朗讀練習</a>
+  <a href="lesson2.html" class="lesson-btn">第2課朗讀練習</a>
+  <a href="lesson3.html" class="lesson-btn">第3課朗讀練習</a>
+  <a href="lesson4.html" class="lesson-btn">第4課朗讀練習</a>
+  <a href="lesson5.html" class="lesson-btn">第5課朗讀練習</a>
+  <a href="lesson6.html" class="lesson-btn">第6課朗讀練習</a>
+  <a href="lesson7.html" class="lesson-btn">第7課朗讀練習</a>
+  <a href="lesson8.html" class="lesson-btn">第8課朗讀練習</a>
+  <a href="lesson9.html" class="lesson-btn">第9課朗讀練習</a>
+  <a href="lesson10.html" class="lesson-btn">第10課朗讀練習</a>
+  <a href="lesson11.html" class="lesson-btn">第11課朗讀練習</a>
+  <a href="lesson12.html" class="lesson-btn">第12課朗讀練習</a>
+</div>
+
+
+  <div class="footer">© 2025 Minna No Nihongo 練習平台</div>
+
+  <!-- 🌸 Splash 自動隱藏 -->
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('splash').style.display = 'none';
+      }, 2000);
+    });
+  </script>
+
+  <!-- 🎵 音樂控制與 Debug 切換 -->
+  <script>
+    const bgm = document.getElementById("bgm");
+    const btn = document.getElementById("musicToggleBtn");
+    const usagi = document.getElementById("usagiDance");
+    const debugBox = document.getElementById("debugBox");
+    const debugBtn = document.getElementById("toggleDebug");
+
+    let isPlaying = false;
+    let debugVisible = false;
+
+    btn.addEventListener("click", async () => {
+      try {
+        if (!isPlaying) {
+          await bgm.play();
+          btn.textContent = "⏸️ 暫停音樂";
+          usagi.style.display = "none";
+          void usagi.offsetWidth;
+          usagi.style.display = "block";
+        } else {
+          bgm.pause();
+          btn.textContent = "🎵 播放音樂";
+          usagi.style.display = "none";
+        }
+
+        // 🎯 更新 Debug 狀態
+        document.getElementById("debugMusic").textContent = isPlaying ? "播放中" : "停止";
+        document.getElementById("debugUsagi").textContent = isPlaying ? "顯示中" : "隱藏";
+        document.getElementById("debugAnim").textContent = isPlaying ? "已啟動" : "未啟動";
+
+        isPlaying = !isPlaying;
+      } catch (e) {
+        alert("⚠️ 無法播放音樂，請確認瀏覽器允許播放或音樂載入成功");
+        console.error(e);
+      }
+    });
+
+    // 🐞 Debug 按鈕切換
+    debugBtn.addEventListener('click', toggleDebug);
+
+    // Ctrl + D 鍵盤快捷開關
+    document.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.key === 'd') {
+        e.preventDefault();
+        toggleDebug();
+      }
+    });
+
+    function toggleDebug() {
+      debugVisible = !debugVisible;
+      debugBox.style.display = debugVisible ? 'block' : 'none';
+      debugBtn.textContent = debugVisible ? '❌ 關閉 Debug' : '🐞 Debug';
+    }
+  </script>
+
+  <!-- 🔧 註冊 Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('✅ Service Worker 註冊成功', reg))
+        .catch(err => console.log('❌ Service Worker 註冊失敗', err));
+    }
+  </script>
+</body>
+</html>
+
+
+

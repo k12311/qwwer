@@ -1,52 +1,151 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>朗讀測試</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📚 한국어・일본어 학습 사이트</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #fefefe;
+      color: #333;
+      padding: 2rem;
       text-align: center;
-      margin-top: 100px;
     }
-    button {
-      padding: 1rem 2rem;
-      background-color: #ffaad4;
-      border: none;
-      border-radius: 10px;
-      color: white;
+    h1 {
+      font-size: 2rem;
+      color: #0077a6;
+      margin-bottom: 2rem;
+    }
+    .lang-switcher {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+    .lang-switcher a {
+      margin: 0 0.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      color: #555;
+    }
+    .lang-switcher a:hover {
+      color: #0077a6;
+    }
+    .nav-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .nav-card {
+      background: #e0f7ff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+    .nav-card:hover {
+      transform: translateY(-5px);
+      background: #c9f0ff;
+    }
+    .nav-card h2 {
       font-size: 1.2rem;
-      cursor: pointer;
+      color: #005e8a;
+      margin-bottom: 0.6rem;
     }
-    button:hover {
-      background-color: #f98fc3;
+    .nav-card a {
+      display: block;
+      margin: 0.4rem 0;
+      text-decoration: none;
+      color: #0077a6;
+      font-weight: bold;
+      font-size: 0.95rem;
     }
   </style>
 </head>
 <body>
-  <h1>🔈 測試朗讀功能</h1>
-  <button onclick="speakJapanese('こんにちは')">點我唸出「こんにちは」</button>
+  <div class="lang-switcher">
+    🌐
+    <a href="index.html">한국어</a>
+    <a href="index-jp.html">日本語</a>
+    <a href="index-zh.html">中文</a>
+  </div>
 
-  <script>
-    function speakJapanese(text) {
-      const utter = new SpeechSynthesisUtterance(text);
-      utter.lang = 'ja-JP';
+  <h1>📚 한국어・일본어 학습 사이트<br>Language Study Hub</h1>
 
-      // 確保語音載入完成
-      const voices = speechSynthesis.getVoices();
-      const jpVoice = voices.find(v => v.lang === 'ja-JP');
-      if (jpVoice) utter.voice = jpVoice;
-
-      speechSynthesis.speak(utter);
-    }
-
-    // 為了 Firefox/部分載入延遲
-    if (speechSynthesis.onvoiceschanged !== undefined) {
-      speechSynthesis.onvoiceschanged = () => {
-        console.log('🔊 語音載入完成');
-      };
-    }
-  </script>
+  <div class="nav-section">
+    <div class="nav-card">
+      <h2>📘 제1과 / Lesson 1 / 第1課</h2>
+      <a href="lesson1.html">🔊 단어 + 예문 읽기</a>
+      <a href="grammar1.html">📖 문법 설명</a>
+      <a href="quiz1.html">📝 연습 문제</a>
+    </div>
+    <div class="nav-card">
+      <h2>📘 제2과 / Lesson 2 / 第2課</h2>
+      <a href="lesson2.html">🔊 단어 + 예문 읽기</a>
+      <a href="grammar2.html">📖 문법 설명</a>
+      <a href="quiz2.html">📝 연습 문제</a>
+    </div>
+    <div class="nav-card">
+      <h2>📘 제3과 / Lesson 3 / 第3課</h2>
+      <a href="lesson3.html">🔊 단어 + 예문 읽기</a>
+      <a href="grammar3.html">📖 문법 설명</a>
+      <a href="quiz3.html">📝 연습 문제</a>
+    </div>
+    <div class="nav-card">
+      <h2>📘 제4과 / Lesson 4 / 第4課</h2>
+      <a href="lesson4.html">🔊 단어 + 예문 읽기</a>
+      <a href="grammar4.html">📖 문법 설명</a>
+      <a href="quiz4.html">📝 연습 문제</a>
+    </div>
+    <div class="nav-card">
+      <h2>📘 제5과 / Lesson 5 / 第5課</h2>
+      <a href="lesson5.html">🔊 단어 + 예문 읽기</a>
+      <a href="grammar5.html">📖 문법 설명</a>
+      <a href="quiz5.html">📝 연습 문제</a>
+    </div>
+    <div class="nav-card">
+      <h2>📘 제6과 / Lesson 6 / 第6課</h2>
+      <a href="lesson6.html">🔊 단어 + 예문 읽기</a>
+      <a href="grammar6.html">📖 문법 설명</a>
+      <a href="quiz6.html">📝 연습 문제</a>
+    </div>
+    <div class="nav-card">
+      <h2>📘 제7과 / Lesson 7 / 第7課</h2>
+      <a href="lesson7.html">🔊 단어 + 예문 읽기</a>
+      <a href="grammar7.html">📖 문법 설명</a>
+      <a href="quiz7.html">📝 연습 문제</a>
+    </div>
+    <div class="nav-card">
+      <h2>📘 제8과 / Lesson 8 / 第8課</h2>
+      <a href="lesson8.html">🔊 단어 + 예문 읽기</a>
+      <a href="grammar8.html">📖 문법 설명</a>
+      <a href="quiz8.html">📝 연습 문제</a>
+    </div>
+    <div class="nav-card">
+      <h2>📘 제9과 / Lesson 9 / 第9課</h2>
+      <a href="lesson9.html">🔊 단어 + 예문 읽기</a>
+      <a href="grammar9.html">📖 문법 설명</a>
+      <a href="quiz9.html">📝 연습 문제</a>
+    </div>
+    <div class="nav-card">
+      <h2>📘 제10과 / Lesson 10 / 第10課</h2>
+      <a href="lesson10.html">🔊 단어 + 예문 읽기</a>
+      <a href="grammar10.html">📖 문법 설명</a>
+      <a href="quiz10.html">📝 연습 문제</a>
+    </div>
+    <div class="nav-card">
+      <h2>📘 제11과 / Lesson 11 / 第11課</h2>
+      <a href="lesson11.html">🔊 단어 + 예문 읽기</a>
+      <a href="grammar11.html">📖 문법 설명</a>
+      <a href="quiz11.html">📝 연습 문제</a>
+    </div>
+    <div class="nav-card">
+      <h2>📘 제12과 / Lesson 12 / 第12課</h2>
+      <a href="lesson12.html">🔊 단어 + 예문 읽기</a>
+      <a href="grammar12.html">📖 문법 설명</a>
+      <a href="quiz12.html">📝 연습 문제</a>
+    </div>
+  </div>
 </body>
 </html>
-

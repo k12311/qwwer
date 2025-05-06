@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📘 제1과: 단어 및 예문 읽기 연습</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f0faff;
+      color: #333;
+      padding: 2rem;
+    }
+    nav {
+      background: #e0f7ff;
+      padding: 1rem;
+      text-align: center;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+    nav a {
+      margin: 0 12px;
+      color: #0077a6;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    h1 {
+      text-align: center;
+      color: #0077a6;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 12px rgba(0,0,0,0.05);
+    }
+    th, td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #d6f0fb;
+      color: #005e8a;
+    }
+    td.ko:hover {
+      cursor: pointer;
+      background-color: #e9faff;
+    }
+    .button-area {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .button-area a {
+      background-color: #00b4d8;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      border-radius: 20px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin: 0.5rem;
+    }
+    .button-area a:hover {
+      background-color: #0096c7;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">🏠 홈</a>
+    <a href="lesson1.html">📘 제1과</a>
+    <a href="grammar1.html">📖 문법 설명</a>
+    <a href="quiz1.html">📝 연습 문제</a>
+  </nav>
+
+  <h1>📘 제1과: 단어 + 예문 읽기 연습</h1>
+  <table>
+    <tr>
+      <th>단어 (한국어)</th>
+      <th>중국어 의미</th>
+      <th>예문 (한국어)</th>
+      <th>중국어 번역</th>
+    </tr>
+    <tr><td class="ko" onclick="speakWord('저')">저</td><td>我</td><td class="ko" onclick="speakSentence('저는 학생입니다')">저는 학생입니다。</td><td>我是學生。</td></tr>
+    <tr><td class="ko" onclick="speakWord('당신')">당신</td><td>你</td><td class="ko" onclick="speakSentence('당신은 선생님입니까')">당신은 선생님입니까？</td><td>你是老師嗎？</td></tr>
+    <tr><td class="ko" onclick="speakWord('저 사람')">저 사람</td><td>他／她／那個人</td><td class="ko" onclick="speakSentence('저 사람은 의사입니다')">저 사람은 의사입니다。</td><td>那個人是醫生。</td></tr>
+    <tr><td class="ko" onclick="speakWord('여러분')">여러분</td><td>各位、大家</td><td class="ko" onclick="speakSentence('여러분 안녕하세요')">여러분, 안녕하세요。</td><td>各位好。</td></tr>
+    <tr><td class="ko" onclick="speakWord('～씨')">～씨</td><td>～先生／小姐</td><td class="ko" onclick="speakSentence('다나카 씨는 선생님입니다')">다나카 씨는 선생님입니다。</td><td>田中先生是老師。</td></tr>
+    <tr><td class="ko" onclick="speakWord('～야')">～야／～아</td><td>～（用於小孩）</td><td class="ko" onclick="speakSentence('사쿠라야는 아이입니다')">사쿠라야는 아이입니다。</td><td>小櫻是小孩。</td></tr>
+    <tr><td class="ko" onclick="speakWord('～군')">～군</td><td>～君（男孩）</td><td class="ko" onclick="speakSentence('타로군은 학생입니다')">타로군은 학생입니다。</td><td>太郎是學生。</td></tr>
+    <tr><td class="ko" onclick="speakWord('～인')">～인</td><td>～人（表國籍）</td><td class="ko" onclick="speakSentence('저는 일본인입니다')">저는 일본인입니다。</td><td>我是日本人。</td></tr>
+    <tr><td class="ko" onclick="speakWord('선생님')">선생님</td><td>老師</td><td class="ko" onclick="speakSentence('선생님은 일본어 선생님입니다')">선생님은 일본어 선생님입니다。</td><td>老師是日文老師。</td></tr>
+    <tr><td class="ko" onclick="speakWord('교사')">교사</td><td>教師</td><td class="ko" onclick="speakSentence('저는 교사입니다')">저는 교사입니다。</td><td>我是教師。</td></tr>
+    <tr><td class="ko" onclick="speakWord('학생')">학생</td><td>學生</td><td class="ko" onclick="speakSentence('저는 학생입니다')">저는 학생입니다。</td><td>我是學生。</td></tr>
+    <tr><td class="ko" onclick="speakWord('회사원')">회사원</td><td>公司職員</td><td class="ko" onclick="speakSentence('다나카 씨는 회사원입니다')">다나카 씨는 회사원입니다。</td><td>田中先生是公司職員。</td></tr>
+    <tr><td class="ko" onclick="speakWord('사원')">사원</td><td>～公司的職員</td><td class="ko" onclick="speakSentence('IMC 회사의 사원입니다')">IMC 회사의 사원입니다。</td><td>我是 IMC 的職員。</td></tr>
+    <tr><td class="ko" onclick="speakWord('은행원')">은행원</td><td>銀行職員</td><td class="ko" onclick="speakSentence('저는 은행원입니다')">저는 은행원입니다。</td><td>我是銀行職員。</td></tr>
+    <tr><td class="ko" onclick="speakWord('의사')">의사</td><td>醫生</td><td class="ko" onclick="speakSentence('저는 의사입니다')">저는 의사입니다。</td><td>我是醫生。</td></tr>
+    <tr><td class="ko" onclick="speakWord('연구자')">연구자</td><td>研究人員</td><td class="ko" onclick="speakSentence('저는 연구자입니다')">저는 연구자입니다。</td><td>我是研究人員。</td></tr>
+    <tr><td class="ko" onclick="speakWord('엔지니어')">엔지니어</td><td>工程師</td><td class="ko" onclick="speakSentence('저는 엔지니어입니다')">저는 엔지니어입니다。</td><td>我是工程師。</td></tr>
+    <tr><td class="ko" onclick="speakWord('대학교')">대학교</td><td>大學</td><td class="ko" onclick="speakSentence('ABC대학교의 학생입니다')">ABC대학교의 학생입니다。</td><td>我是ABC大學的學生。</td></tr>
+    <tr><td class="ko" onclick="speakWord('병원')">병원</td><td>醫院</td><td class="ko" onclick="speakSentence('병원의 의사입니다')">병원의 의사입니다。</td><td>我是醫院的醫生。</td></tr>
+    <tr><td class="ko" onclick="speakWord('누구')">누구／어느 분</td><td>誰（哪位）</td><td class="ko" onclick="speakSentence('저 사람은 누구입니까')">저 사람은 누구입니까？</td><td>那位是誰？</td></tr>
+  </table>
+
+  <div class="button-area">
+    <a href="quiz1.html">📝 연습 문제 풀기</a>
+    <a href="lesson2.html">➡️ 다음 과 보기</a>
+  </div>
+
+  <script>
+    function speakWord(text) {
+      playKorean(text, 'word');
+    }
+
+    function speakSentence(text) {
+      playKorean(text, 'sentence');
+    }
+
+    function playKorean(text, type) {
+      speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'ko-KR';
+      const voices = speechSynthesis.getVoices();
+      const krVoice = voices.find(v => v.lang === 'ko-KR' || v.lang === 'ko_KR');
+      if (krVoice) utterance.voice = krVoice;
+      utterance.rate = type === 'word' ? 0.9 : 1.0;
+      speechSynthesis.speak(utterance);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const checkVoices = () => {
+        if (speechSynthesis.getVoices().length > 0) return;
+        setTimeout(checkVoices, 100);
+      };
+      checkVoices();
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
